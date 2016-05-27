@@ -1,21 +1,4 @@
-#import "TableViewModel.h"
-
-@implementation TableViewModel
-
--(id)initWithTableViewCellIdentifier:(NSString *)cellIdentifier{
-    if(self=[super init]){
-        self.cellIdentifier=cellIdentifier;
-        self.items=[[NSMutableArray alloc]initWithCapacity:0];
-    }
-    return self;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.items.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    self.tabelViewModelBlock(cell,self.items[indexPath.row]);
-    return cell;
-}
-@end
+#创建TableViewModel 类，集成NSObject
+在ViewController 创建ViewMdel类，并将tableview的datasource设置为viewmodel
+mTalbeView.dataSource=tableViewModel;
+在TableViewModel中实现datasource的代理方法
